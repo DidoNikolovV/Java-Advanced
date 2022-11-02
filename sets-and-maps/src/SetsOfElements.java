@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+import java.util.Set;
 
 public class SetsOfElements {
     public static void main(String[] args) {
@@ -21,27 +24,24 @@ public class SetsOfElements {
             if(i < n) {
                 nSet.add(number);
             } else {
+
                 mSet.add(number);
             }
         }
 
-        Set<Integer> repeatingElements = new LinkedHashSet<>();
-
         if(nSet.size() > mSet.size()) {
             for(int num : nSet) {
                 if (mSet.contains(num)) {
-                    repeatingElements.add(num);
+                    System.out.print(num + " ");
                 }
             }
         } else {
             for(int num : mSet) {
                 if(nSet.contains(num)) {
-                    repeatingElements.add(num);
+                    System.out.print(num + " ");
                 }
             }
         }
-    }
-
 
 
     }
