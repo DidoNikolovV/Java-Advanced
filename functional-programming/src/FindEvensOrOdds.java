@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class FindEvensOrOdds {
     public static void main(String[] args) {
@@ -19,11 +20,16 @@ public class FindEvensOrOdds {
         int up = range[1];
 
 
-        System.out.println(IntStream.rangeClosed(low, up)
+      Stream<String> stringStream = IntStream.rangeClosed(low, up)
                 .boxed()
                 .filter(getPredicate(condition))
-                .map(String::valueOf)
-                .collect(Collectors.joining(" ")));
+                .map(String::valueOf);
+
+      String collect = stringStream
+              .collect(Collectors.joining(" "));
+
+      System.out.println(collect);
+
     }
 
     public static Predicate<Integer> getPredicate(String condition) {
