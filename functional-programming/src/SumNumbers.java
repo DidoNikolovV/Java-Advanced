@@ -15,12 +15,12 @@ public class SumNumbers {
 
 
         Function<List<Integer>, String> countFormatter = list -> "Count = " + list.size();
-        Function<List<Integer>, Integer> sumAllElements = list -> list.stream().mapToInt(e -> e).sum();
+//        Function<List<Integer>, Integer> sumAllElements = list -> list.stream().mapToInt(e -> e).sum();
         Function<Integer, String> sumFormatter = sum -> "Sum = " + sum;
 
-//        int sum = numbers.stream().reduce(0, (acc, curr) -> acc + curr);
+        int sum = numbers.stream().reduce(0, (acc, curr) -> acc + curr);
 
-        int sum = sumAllElements.apply(numbers);
+//        int sum = sumAllElements.apply(numbers);
         String sumOutput = sumFormatter.apply(sum);
         String countOutput = countFormatter.apply(numbers);
 
