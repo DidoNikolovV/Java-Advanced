@@ -23,7 +23,13 @@ public class FindEvensOrOdds {
       Stream<String> stringStream = IntStream.rangeClosed(low, up)
                 .boxed()
                 .filter(getPredicate(condition))
-                .map(String::valueOf);
+                .map(e ->
+                {
+                    System.out.println("Hello from mapper");
+                    return String.valueOf(e);
+                });
+
+        System.out.println("Before termination");
 
       String collect = stringStream
               .collect(Collectors.joining(" "));
