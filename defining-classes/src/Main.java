@@ -1,34 +1,59 @@
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int n = Integer.parseInt(scanner.nextLine());
+        String input = scanner.nextLine();
 
-        List<Car> cars = new LinkedList<>();
+        Map<Integer, BankAccount> bankAccounts = new HashMap<>();
 
-        while(n-- > 0) {
-            String[] inputParts = scanner.nextLine().split(" ");
-            String brand = inputParts[0];
-            String model = "unknown";
-            int horsePower = -1;
 
-            if(inputParts.length == 2) {
-                model = inputParts[1];
-            } else if(inputParts.length == 3) {
-                model = inputParts[1];
-                horsePower = Integer.parseInt(inputParts[2]);
+        while(!input.equals("End")) {
+            String[] inputParts = input.split(" ");
+            String command = inputParts[0];
+            String output = null;
+            switch(command) {
+                case "Create":
+                    int id = BankAccount.getId();
+                    BankAccount bankAccount = new BankAccount();
+                    bankAccounts.put(id, bankAccount);
+                    output = "Account ID" + id + " created";
+                    break;
+                case "Deposit":
+                    BankAccount account = bankAccounts.get(Integer.parseInt(inputParts[1]));
+                    if(account == null) {
+                        output = "Account does not exist";
+                    } else {
+                        int amount = Integer.parseInt(inputParts[2]);
+                        account.deposit(amount);
+                        output = "Deposited " + amount + " to " + "ID" + inputParts[1];
+                    }
+                    break;
+                case "SetInterest":
+                        double newInterest = Double.parseDouble(inputParts[1]);
+                        BankAccount.setInterestRate(newInterest);
+                    break;
+                case "GetInterest":
+                    BankAccount accountToGetInterest = bankAccounts.get(Integer.parseInt(inputParts[1]));
+                    if(accountToGetInterest == null) {
+                        output = "Account does not exist";
+                    } else {
+                        double interest = accountToGetInterest.getInterest(Integer.parseInt(inputParts[2]));
+                        output = String.format("%.2f", interest);
+                    }
+                    break;
+
             }
 
-            Car car = new Car(brand, model, horsePower);
-            cars.add(car);
+            if(output != null) {
+                System.out.println(output);
 
+            }
+            input = scanner.nextLine();
         }
-
-        cars.forEach(car -> System.out.println(car.carInfo()));
 
     }
 }
