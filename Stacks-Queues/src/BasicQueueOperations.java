@@ -31,6 +31,5 @@ public class BasicQueueOperations {
             System.out.println(Collections.min(queue));
         }
 
-
     }
 }

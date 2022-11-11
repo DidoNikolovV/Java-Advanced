@@ -22,21 +22,16 @@ public class DiagonalDifference {
         firstDiagonalSum = getFirstDiagonalSum(size, matrix, firstDiagonalSum);
 
 
-        secondDiagonalSum = getSecondDiagonalSum(size, matrix, secondDiagonalSum);
-
-        System.out.println(Math.abs(firstDiagonalSum- secondDiagonalSum));
-
-
-
-    }
-
-    private static int getSecondDiagonalSum(int size, int[][] matrix, int secondDiagonalSum) {
         for(int i = 0; i < size; i++) {
             int row = i;
             int col = size - 1 - i;
             secondDiagonalSum += matrix[row][col];
         }
-        return secondDiagonalSum;
+
+        System.out.println(Math.abs(firstDiagonalSum- secondDiagonalSum));
+
+
+
     }
 
     private static int getFirstDiagonalSum(int size, int[][] matrix, int firstDiagonalSum) {
