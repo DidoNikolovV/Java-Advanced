@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -6,19 +8,27 @@ public class Main {
 
         int n = Integer.parseInt(scanner.nextLine());
 
+        List<Car> cars = new LinkedList<>();
+
         while(n-- > 0) {
             String[] inputParts = scanner.nextLine().split(" ");
             String brand = inputParts[0];
-            String model = inputParts[1];
-            int horsePower = Integer.parseInt(inputParts[2]);
+            String model = "unknown";
+            int horsePower = -1;
 
-            Car car = new Car();
-            car.setBrand(brand);
-            car.setModel(model);
-            car.setHorsePower(horsePower);
+            if(inputParts.length == 2) {
+                model = inputParts[1];
+            } else if(inputParts.length == 3) {
+                model = inputParts[1];
+                horsePower = Integer.parseInt(inputParts[2]);
+            }
 
-            System.out.println(car.carInfo());
+            Car car = new Car(brand, model, horsePower);
+            cars.add(car);
+
         }
+
+        cars.forEach(car -> System.out.println(car.carInfo()));
 
     }
 }
