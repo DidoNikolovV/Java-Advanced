@@ -1,5 +1,7 @@
 import org.w3c.dom.Node;
 
+import java.util.function.Consumer;
+
 public class MyStack {
 
     private static class Node {
@@ -24,6 +26,7 @@ public class MyStack {
     }
 
     public int pop() {
+        ensureNotEmpty();
         int element = this.top.element;
 
         this.top = this.top.prev;
@@ -33,6 +36,21 @@ public class MyStack {
     }
 
     public int peek() {
+        ensureNotEmpty();
         return this.top.element;
+    }
+
+    public void forEach(Consumer<Integer> consumer) {
+        Node current = this.top;
+        while(current != null) {
+            consumer.accept(current.element);
+            current = current.prev;
+        }
+    }
+
+    private void ensureNotEmpty() {
+        if(this.top == null) {
+            throw new IllegalStateException("Cannot execute on empty stack.");
+        }
     }
 }
