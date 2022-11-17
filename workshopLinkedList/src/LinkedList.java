@@ -11,6 +11,24 @@ public class LinkedList {
         this.size++;
     }
 
+    public void addLast(int number) {
+        Node newNode = new Node(number);
+        if(isEmpty()) {
+           addFirst(number);
+           return;
+        }
+
+        Node currentNode = this.head;
+        while(currentNode.next != null) {
+            currentNode = currentNode.next;
+        }
+
+        currentNode.next = newNode;
+
+
+        this.size++;
+    }
+
     public int removeFirst() {
         if(isEmpty()) {
             throw new IllegalStateException("Can't remove an element from an empty list");
