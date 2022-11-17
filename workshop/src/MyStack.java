@@ -22,4 +22,17 @@ public class MyStack {
         this.top = new Node(element, this.top);
         this.size++;
     }
+
+    public int pop() {
+        int element = this.top.element;
+
+        this.top = this.top.prev;
+        this.size--;
+
+        return element;
+    }
+
+    public int peek() {
+        return this.top.element;
+    }
 }
