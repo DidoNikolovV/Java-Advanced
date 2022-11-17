@@ -55,6 +55,20 @@ public class SmartArray {
         return false;
     }
 
+    public void add(int index, int element) {
+        validateIndex(index);
+
+        int lastIndex = this.size - 1;
+
+        int lastElement = this.data[size- 1];
+        for(int i = lastIndex; i > index; i--) {
+            this.data[i] = this.data[i - 1];
+        }
+
+        this.data[index] = element;
+        add(lastElement);
+    }
+
     private Integer[] grow() {
         Integer[] newData = new Integer[this.data.length * 2];
 
