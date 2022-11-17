@@ -45,6 +45,16 @@ public class SmartArray {
         return element;
     }
 
+    public boolean contains(int element) {
+        for(int i = 0; i < this.size; i++) {
+            if(this.data[i] == element) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private Integer[] grow() {
         Integer[] newData = new Integer[this.data.length * 2];
 
