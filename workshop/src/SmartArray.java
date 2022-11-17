@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class SmartArray {
     private Integer[] data;
@@ -67,6 +68,13 @@ public class SmartArray {
 
         this.data[index] = element;
         add(lastElement);
+    }
+
+    public void forEach(Consumer<Integer> consumer) {
+        for(int i = 0; i < this.size; i++) {
+            Integer e = this.data[i];
+            consumer.accept(e);
+        }
     }
 
     private Integer[] grow() {
