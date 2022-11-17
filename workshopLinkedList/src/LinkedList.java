@@ -11,6 +11,16 @@ public class LinkedList {
         this.size++;
     }
 
+    public int removeFirst() {
+        if(isEmpty()) {
+            throw new IllegalStateException("Can't remove an element from an empty list");
+        }
+        int result = head.value;
+        this.head = head.next;
+        this.size--;
+        return result;
+    }
+
     public int size() {
         return this.size;
     }
