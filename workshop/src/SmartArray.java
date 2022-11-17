@@ -43,6 +43,11 @@ public class SmartArray {
         }
 
         this.data[this.size] = null;
+
+        if(this.data.length / 4 >= this.size && this.data.length / 4 == 4) {
+            this.data = shrink();
+        }
+
         return element;
     }
 
@@ -70,6 +75,8 @@ public class SmartArray {
         add(lastElement);
     }
 
+
+
     public void forEach(Consumer<Integer> consumer) {
         for(int i = 0; i < this.size; i++) {
             Integer e = this.data[i];
@@ -85,7 +92,20 @@ public class SmartArray {
 //            newData[i] = this.data[i];
 //        }
 
+
         return newData;
     }
 
+
+    private Integer[] shrink() {
+        Integer[] newData = new Integer[this.data.length / 2];
+
+
+        if (this.size >= 0) System.arraycopy(this.data, 0, newData, 0, this.size);
+//        for(int i = 0; i < this.size; i++) {
+//            newData[i] = this.data[i];
+//        }
+
+        return newData;
+    }
 }
