@@ -57,12 +57,28 @@ public class LinkedList {
 
     }
 
+    public int get(int index) {
+        checkIndex(index);
+        Node currentNode = this.head;
+        for(int i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+
+        return currentNode.value;
+    }
+
     public int size() {
         return this.size;
     }
 
     public boolean isEmpty() {
         return this.size == 0;
+    }
+
+    private void checkIndex(int index) {
+        if(index < 0 && index >= this.size) {
+            throw new IndexOutOfBoundsException("No such index in the Linked List");
+        }
     }
 
 }
