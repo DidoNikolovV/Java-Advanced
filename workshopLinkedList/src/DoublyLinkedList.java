@@ -53,14 +53,9 @@ public class DoublyLinkedList {
             return removeFirst();
         }
 
-        Node currentNode = this.head;
-        while(currentNode.next.next != null) {
-            currentNode = currentNode.next;
-        }
-
-        int result = currentNode.next.value;
-        currentNode.next = null;
-        this.tail = currentNode;
+        int result = this.tail.value;
+        this.tail = this.tail.prev;
+        this.tail.next = null;
         this.size--;
         return result;
 
