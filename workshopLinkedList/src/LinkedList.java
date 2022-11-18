@@ -86,6 +86,19 @@ public class LinkedList {
 
     }
 
+    public int[] toArray() {
+        int[] arr = new int[size];
+        int counter = 0;
+        Node currentNode = this.head;
+        while(currentNode != null) {
+            arr[counter] = currentNode.value;
+            counter++;
+            currentNode = currentNode.next;
+        }
+
+        return arr;
+    }
+
     private void checkIndex(int index) {
         if(index < 0 && index >= this.size) {
             throw new IndexOutOfBoundsException("No such index in the Linked List");
