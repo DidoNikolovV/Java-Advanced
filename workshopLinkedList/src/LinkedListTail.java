@@ -19,18 +19,12 @@ public class LinkedListTail {
         }
 
         public void addLast(int number) {
-            Node newNode = new Node(number);
             if(isEmpty()) {
                 addFirst(number);
                 return;
             }
-
-            Node currentNode = this.head;
-            while(currentNode.next != null) {
-                currentNode = currentNode.next;
-            }
-
-            currentNode.next = newNode;
+            Node newNode = new Node(number);
+            this.tail.next = newNode;
             this.tail = newNode;
             this.size++;
         }
@@ -42,6 +36,10 @@ public class LinkedListTail {
             int result = head.value;
             this.head = head.next;
             this.size--;
+            if(isEmpty()) {
+                this.head = null;
+                this.tail = null;
+            }
             return result;
         }
 
