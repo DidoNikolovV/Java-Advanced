@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class LinkedList {
@@ -86,17 +88,23 @@ public class LinkedList {
 
     }
 
-    public int[] toArray() {
-        int[] arr = new int[size];
-        int counter = 0;
-        Node currentNode = this.head;
-        while(currentNode != null) {
-            arr[counter] = currentNode.value;
-            counter++;
-            currentNode = currentNode.next;
-        }
+//    public int[] toArray() {
+//        int[] arr = new int[size];
+//        int counter = 0;
+//        Node currentNode = this.head;
+//        while(currentNode != null) {
+//            arr[counter] = currentNode.value;
+//            counter++;
+//            currentNode = currentNode.next;
+//        }
+//
+//        return arr;
+//    }
 
-        return arr;
+    public int[] toArray() {
+        List<Integer> result = new ArrayList<>();
+        forEach(result::add);
+        return result.stream().mapToInt(e -> e).toArray();
     }
 
     private void checkIndex(int index) {
