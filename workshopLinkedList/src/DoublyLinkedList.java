@@ -42,6 +42,8 @@ public class DoublyLinkedList {
         if(isEmpty()) {
             this.head = null;
             this.tail = null;
+        } else {
+            this.head.prev = null;
         }
         return result;
     }
