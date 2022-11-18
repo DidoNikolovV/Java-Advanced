@@ -54,6 +54,7 @@ public class LinkedList {
         }
 
         int result = currentNode.next.value;
+
         currentNode.next = null;
         this.size--;
 

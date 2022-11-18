@@ -55,8 +55,8 @@ public class LinkedListTail {
 
             int result = currentNode.next.value;
             currentNode.next = null;
+            this.tail = currentNode;
             this.size--;
-
             return result;
 
         }
