@@ -63,12 +63,22 @@ public class DoublyLinkedList {
 
     public int get(int index) {
         checkIndex(index);
-        Node currentNode = this.head;
-        for(int i = 0; i < index; i++) {
-            currentNode = currentNode.next;
+        Node currentNode = null;
+        if(index <= size /2) {
+            currentNode = this.head;
+            for(int i = 0; i < index; i++) {
+                currentNode = currentNode.next;
+            }
+            return currentNode.value;
+        } else {
+            currentNode = this.tail;
+            for(int i = this.size - 1; i > index; i--) {
+                currentNode = currentNode.prev;
+            }
         }
-
         return currentNode.value;
+
+
     }
 
     public int size() {
