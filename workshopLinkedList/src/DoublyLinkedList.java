@@ -27,6 +27,7 @@ public class DoublyLinkedList {
         }
         Node newNode = new Node(number);
         this.tail.next = newNode;
+        newNode.prev = this.tail;
         this.tail = newNode;
         this.size++;
     }
