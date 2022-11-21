@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Box<T> {
@@ -14,9 +15,11 @@ public class Box<T> {
     }
 
     public void swap(int firstIndex, int secondIndex) {
-        T temp = values.get(firstIndex);
-        values.set(firstIndex, values.get(secondIndex));
-        values.set(secondIndex, temp);
+//        T temp = values.get(firstIndex);
+//        values.set(firstIndex, values.get(secondIndex));
+//        values.set(secondIndex, temp);
+
+        Collections.swap(values, firstIndex, secondIndex);
     }
 
     @Override
