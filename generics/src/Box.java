@@ -13,6 +13,13 @@ public class Box<T> {
         this.values.add(element);
     }
 
+    public void swap(int firstIndex, int secondIndex) {
+        T firstValue = values.get(firstIndex);
+        T secondValue = values.get(secondIndex);
+        values.set(firstIndex, secondValue);
+        values.set(secondIndex, firstValue);
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
