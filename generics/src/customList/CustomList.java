@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CustomList<T extends Comparable> {
+public class CustomList<T extends Comparable<T>> {
     private List<T> values;
 
     public CustomList() {
@@ -54,6 +54,15 @@ public class CustomList<T extends Comparable> {
         return (T) values.stream().max(Comparator.naturalOrder()).get();
 
     }
+
+    public int size() {
+        return values.size();
+    }
+
+    public T get(int index) {
+        return values.get(index);
+    }
+
 
     @Override
     public String toString() {

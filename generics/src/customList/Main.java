@@ -42,6 +42,9 @@ public class Main {
                 case "Print":
                     System.out.println(customList.toString());
                     break;
+                case "Sort":
+                    Sorter.sort(customList);
+                    break;
                 default:
                     System.out.println("Invalid command");
                     break;
