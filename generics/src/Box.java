@@ -1,14 +1,25 @@
-import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Box<T> {
-    private ArrayDeque<T> elements = new ArrayDeque<>();
+    private List<T> values;
 
-    public Box(T element) {
-        this.elements.add(element);
+    public Box() {
+        this.values = new ArrayList<>();
+    }
+
+
+    public void add(T element) {
+        this.values.add(element);
     }
 
     @Override
     public String toString() {
-        return elements.peek().getClass().getName() + ": " + elements.peek();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (T value : values) {
+            stringBuilder.append(String.format("%s: %s%n", value.getClass().getName(), value.toString()));
+        }
+
+        return stringBuilder.toString();
     }
 }
