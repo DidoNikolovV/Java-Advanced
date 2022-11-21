@@ -14,10 +14,9 @@ public class Box<T> {
     }
 
     public void swap(int firstIndex, int secondIndex) {
-        T firstValue = values.get(firstIndex);
-        T secondValue = values.get(secondIndex);
-        values.set(firstIndex, secondValue);
-        values.set(secondIndex, firstValue);
+        T temp = values.get(firstIndex);
+        values.set(firstIndex, values.get(secondIndex));
+        values.set(secondIndex, temp);
     }
 
     @Override
