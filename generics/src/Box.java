@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Box<T> {
+public class Box<T extends Comparable> {
     private List<T> values;
 
     public Box() {
@@ -20,6 +20,10 @@ public class Box<T> {
 //        values.set(secondIndex, temp);
 
         Collections.swap(values, firstIndex, secondIndex);
+    }
+
+    public long countGreaterItems(T element) {
+        return values.stream().filter(itemFromOurBox -> itemFromOurBox.compareTo(element) > 0).count();
     }
 
     @Override
