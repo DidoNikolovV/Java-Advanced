@@ -18,7 +18,7 @@ public class Main {
         books.sort(new BookComparator());
 
         books.stream()
-                .sorted(new BookComparator())
+                .sorted(new BookComparatorByYear())
                 .forEach(System.out::println);
 
 
