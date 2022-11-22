@@ -1,5 +1,7 @@
 package Library;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class Library implements Iterable<Book> {
@@ -26,18 +28,6 @@ public class Library implements Iterable<Book> {
 
     @Override
     public Iterator<Book> iterator() {
-        return new Iterator<>() {
-            private int counter = 0;
-
-            @Override
-            public boolean hasNext() {
-                return counter < books.length;
-            }
-
-            @Override
-            public Book next() {
-                return books[counter++];
-            }
-        };
+        return Arrays.stream(books).iterator();
     }
 }
