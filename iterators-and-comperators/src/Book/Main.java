@@ -15,6 +15,13 @@ public class Main {
         books.add(bookTwo);
         books.add(bookThree);
 
+        books.sort(new BookComparator());
+
+        books.stream()
+                .sorted(new BookComparator())
+                .forEach(System.out::println);
+
+
 
     }
 }
