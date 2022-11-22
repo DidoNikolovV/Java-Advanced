@@ -3,6 +3,7 @@ package Book;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,12 +16,34 @@ public class Main {
         books.add(bookTwo);
         books.add(bookThree);
 
-        books.sort(new BookComparator());
+        System.out.println("Unoredered books");
+
+        for(Book b : books) {
+            System.out.println(b);
+        }
+
+        System.out.println("Ordered by year with stream");
 
         books.stream()
                 .sorted(new BookComparatorByYear())
                 .forEach(System.out::println);
 
+        System.out.println("Ordered by natural order(Comparable<Book>)");
+
+        books.stream()
+                .sorted()
+                .forEach(System.out::println);
+
+        TreeSet<Book> setOfBooks = new TreeSet<>(new BookComparatorByYear());
+        setOfBooks.add(bookOne);
+        setOfBooks.add(bookTwo);
+        setOfBooks.add(bookThree);
+
+        System.out.println("Ordered in TreeSet by year");
+
+        for(Book b : setOfBooks) {
+            System.out.println(b);
+        }
 
 
     }
